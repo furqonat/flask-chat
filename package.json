@@ -1,0 +1,14 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "sample chat app using tailwindcss flask and typescript",
+  "main": "index.js",
+  "author": "Furqon Romdhani",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "tailwindcss": "^3.2.1",
+    "typescript": "^4.8.4"
+  }
+}
