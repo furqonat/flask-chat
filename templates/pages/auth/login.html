@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+{% block title %}
+  Login
+{% endblock %}
+
+{% from 'macros/input.html' import input %}
+{% from 'macros/icons/email_outlined.html' import email_outlined %}
+{% from 'macros/icons/key_outlined.html' import key_outlined %}
+
+{% block body %}
+  <main class="container mx-auto">
+    <!-- create grid two column and height full screen -->
+    <div class="grid grid-cols-2 h-screen">
+      <!-- left column -->
+      <div class="bg-indigo-700 text-white flex flex-col justify-center px-10">
+        <h1 class="text-3xl font-bold">Welcome back</h1>
+        <p class="text-xl mt-5">Please login with your credential to continue</p>
+      </div>
+      <!-- right column -->
+      <div class="flex flex-col justify-center px-2 w-[80%] mx-auto">
+        <form class="form" action="{{ url_for('auth.login') }}" method="post">
+          {% if error %}
+            <span class="w-full bg-red-400 text-white rounded-md p-2">{{ error }}</span>
+          {% endif %}
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          {{ input('Email', 'email', 'Email address', start_icon = email_outlined(color = '#bfbfbf')) }}
+          {{ input('password', 'Password', 'Password', start_icon = key_outlined(color = '#bfbfbf')) }}
+
+          <div class="flex flex-row-reverse">
+            <span class="text-md">
+              Forgot password?
+              <a href="{{ url_for('auth.forgot_password') }}" class="text-indigo-700">Click here</a>
+            </span>
+          </div>
+          <button type="submit" class="bg-indigo-700 py-2 rounded-md px-3 text-white">Login</button>
+          <div>
+            <span class="text-md">
+              Don't have an account?
+              <a href="{{ url_for('auth.register') }}" class="text-indigo-700">Register</a>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block script %}
+  <script src="/dist/login.js"></script>
+{% endblock %}

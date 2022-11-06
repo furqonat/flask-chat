@@ -1,0 +1,29 @@
+{% from 'macros/icons/visibility_on.html' import visibility_on %}
+{% from 'macros/icons/visibility_off.html' import visibility_off %}
+
+{% macro input(name, type, placeholder, start_icon) %}
+  {% set input_type = type %}
+  <label for="{{ name }}" class="w-full">{{ name }}</label>
+  <span class="form-control">
+    {{ start_icon }}
+    <input id="{{ name }}" name="{{ name }}" placeholder="{{ placeholder }}" type="{{ input_type }}" />
+    {% if (input_type|lower) == 'password' %}
+      {{ visibility_on(color = '#bfbfbf', class = 'cursor-pointer', id = 'visibility_on') }}
+      <script>
+        const visibilityOn = document.getElementById('visibility_on');
+        const passwordInput = document.getElementById('{{ name }}');
+        visibilityOn.onclick = () => {
+          if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            visibilityOn.innerHTML = '';
+            visibilityOn.insertAdjacentHTML('afterbegin', `{{visibility_off(color = '#bfbfbf', class = 'cursor-pointer', id = 'visibility_on')}}`);
+          } else {
+            passwordInput.type = 'password';
+            visibilityOn.innerHTML = '';
+            visibilityOn.insertAdjacentHTML('afterbegin', `{{visibility_on(color = '#bfbfbf', class = 'cursor-pointer', id = 'visibility_on')}}`);
+          }
+        }
+      </script>
+    {% endif %}
+  </span>
+{% endmacro %}

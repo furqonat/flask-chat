@@ -7,13 +7,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "tailwindcss -i src/index.css -o ./dist/css/tailwind.css --watch && tsc -w"
+    "dev": "tailwindcss -i src/index.css -o ./dist/css/index.css --watch && tsc --watch"
   },
   "dependencies": {
-
+    "@types/socket.io-client": "^3.0.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.2.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "vite": "^3.2.2"
   }
 }

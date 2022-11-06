@@ -1,6 +1,5 @@
-document.body.onload = () => {
-  const app = ""
-  const root = document.getElementById("root")
-  // root.innerHTML = app
 
-}
+
+document.body.addEventListener('onload', () => {
+    const root = document.getElementById('root')
+})

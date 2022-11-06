@@ -7,3 +7,7 @@ npm-debug.log
 yarn.error.log
 env
 __pycache__
+*.db
+*.sqlite3
+*.pyc
+*.pyo

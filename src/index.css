@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form {
+    @apply flex flex-col w-full gap-3;
+}
+
+.form:focus-within .form-control:has(:focus) {
+    @apply border-blue-500 transition ease-in-out delay-150;
+}
+
+.form-control {
+    @apply flex flex-row items-center gap-2 border border-solid border-gray-300 rounded-xl p-2;
+}
+
+.form-control > input {
+    @apply w-full;
+}
+input:focus {
+    @apply outline-none;
+}
+

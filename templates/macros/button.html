@@ -1,0 +1,8 @@
+{% macro button(type='button', children='', class='', **kwargs) %}
+    <button
+            type="{{type}}"
+            class="px-3 py-2 bg-indigo-700 text-white rounded-md mt-5 hover:bg-indigo-600 {{class}}"
+            {{ kwargs | raw }}>
+        {{children}}
+    </button>
+{% endmacro %}

@@ -9,4 +9,4 @@ auth_api = Blueprint(
 
 @auth_api.post('/login')
 def login():
-    pass
+    return ""

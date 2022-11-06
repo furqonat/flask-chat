@@ -1,20 +1,28 @@
 from functools import wraps
-from flask import render_template, redirect, url_for
-from htmlmin.minify import html_minify
 
+from flask import render_template, redirect, session, url_for
+from flask.wrappers import Response
 
 def view(file_name: str, **kwargs):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwarg):
             # permissions = kwargs.get('permissions', None)
-            if kwargs.get('required_auth', False):
-                return redirect(url_for('auth.login'))
-            # elif permissions and not any([permission in permissions for permission in kwargs.get('permissions', [])]):
-            #     return redirect(url_for('auth.login'))
-            return html_minify(render_template(file_name, **func(*args, **kwarg)))
+            require_auth = kwargs.get("require_auth", False)
+            user_uid = session.get("user_uid", None)
+            ctx = func(*args, **kwarg)
+            if require_auth == True:
+                if user_uid == None:
+                    return redirect(url_for("auth.login"))
+                return render_template(file_name, **ctx)
+            if ctx is None:
+                ctx = {}
+            elif isinstance(ctx, tuple):
+                ctx = dict(zip(kwargs.get("keys", []), ctx))
+            elif not isinstance(ctx, dict):
+                return ctx
+            return render_template(file_name, **ctx)
 
         return wrapper
 
     return decorator
-
