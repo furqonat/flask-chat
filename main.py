@@ -3,7 +3,7 @@ from flask_wtf.csrf import CSRFProtect
 from flask_minify import Minify
 
 from app.controllers import auth, chat
-from app.utils import bcrypt, db
+from app.utils import bcrypt, db, socket, ml
 
 app = Flask(
     __name__, static_folder="dist", static_url_path="/dist", template_folder="templates"
@@ -23,7 +23,8 @@ def application_factory():
     app.register_blueprint(auth)
     app.register_blueprint(chat)
     Minify(app=app, html=True, js=True, cssless=True)
-
+    socket.init_app(app)
+    ml.init_app(app)
     return app
 
 
@@ -31,3 +32,4 @@ if __name__ == "__main__":
     app_context = application_factory()
     app_context.app_context().push()
     app_context.run(debug=True)
+    socket.run(app_context)

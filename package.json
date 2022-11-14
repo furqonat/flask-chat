@@ -1,20 +1,30 @@
 {
-  "name": "backend",
+  "name": "flask_chat",
   "version": "0.0.1",
   "description": "sample chat app using tailwindcss flask and typescript",
-  "main": "index.js",
   "author": "Furqon Romdhani",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "tailwindcss -i src/index.css -o ./dist/css/index.css --watch && tsc --watch"
+    "dev": "webpack --config webpack.config.js --watch  --mode=development",
+    "build": "webpack --config webpack.config.js --mode=production"
   },
   "dependencies": {
     "@types/socket.io-client": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.1",
+    "postcss": "^8.4.18",
+    "postcss-loader": "^7.0.1",
+    "postcss-preset-env": "^7.8.2",
+    "style-loader": "^3.3.1",
     "tailwindcss": "^3.2.1",
+    "ts-loader": "^9.4.1",
     "typescript": "^4.8.4",
-    "vite": "^3.2.2"
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }

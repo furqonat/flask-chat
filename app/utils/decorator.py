@@ -1,7 +1,8 @@
 from functools import wraps
 
 from flask import render_template, redirect, session, url_for
-from flask.wrappers import Response
+from flask_socketio import disconnect
+
 
 def view(file_name: str, **kwargs):
     def decorator(func):
@@ -26,3 +27,14 @@ def view(file_name: str, **kwargs):
         return wrapper
 
     return decorator
+
+
+def validate_user(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        user_uid = session.get("user_uid", None)
+        if user_uid == None:
+            disconnect()
+            return redirect(url_for("auth.login"))
+        return func(*args, **kwargs)
+    return wrapper

@@ -1,5 +1,2 @@
-
-
-document.body.addEventListener('onload', () => {
-    const root = document.getElementById('root')
-})
+export * from './login'
+export * from './chat'

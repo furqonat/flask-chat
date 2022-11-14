@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*, ::before, ::after {
+    font-family: 'Roboto', sans-serif;
+}
+
 .form {
     @apply flex flex-col w-full gap-3;
 }
@@ -19,5 +23,21 @@
 }
 input:focus {
     @apply outline-none;
+}
+
+.chat-item {
+    @apply flex flex-col gap-2 p-4 cursor-pointer;
+}
+
+.chat-item:hover {
+    @apply bg-gray-100;
+}
+
+.chat-title {
+    @apply text-lg;
+}
+
+.chat-status {
+    @apply text-sm text-gray-500;
 }
 

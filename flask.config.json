@@ -4,5 +4,6 @@
     "WTF_CSRF_ENABLED": true,
     "WTF_CSRF_SECRET_KEY": "uada adasd asdasda asdsada",
     "SECRET_KEY": "adasd asdasd asdasd asdasd",
-    "SESSION_TYPE": "sqlalchemy"
+    "SESSION_TYPE": "sqlalchemy",
+    "DEBUG": true
 }

@@ -2,7 +2,7 @@ from typing import Any, Optional
 
 from sqlalchemy.exc import SQLAlchemyError
 
-from ..models import Chats
+from ..models import Accounts, Chats
 from ..utils import db
 
 
@@ -43,6 +43,11 @@ def delete_chat_by_uid(uid: str) -> bool:
         return False
 
     return True
+
+
+# TODO: implementation this method to get all chats from a group
+def get_all_avaliable_user() -> Optional[list[Accounts]]:
+    return db.session.execute(db.select(Accounts)).scalars()
 
 
 # def delete_chat_group_by_uid(uid: str) -> bool:

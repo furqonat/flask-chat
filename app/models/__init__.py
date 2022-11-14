@@ -1,2 +1,2 @@
-from .accounts import Accounts
+from .accounts import Accounts, account_schema
 from .chats import Chats
