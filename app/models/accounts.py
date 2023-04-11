@@ -8,6 +8,7 @@ from .room import chat_room
 @dataclass
 class Accounts(db.Model):  # type: ignore
 
+    __allow_unmapped__ = True
     uid: Union[str, db.Column] = db.Column(
         db.String(36), primary_key=True, default=generate_uuid
     )

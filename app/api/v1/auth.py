@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, flash, make_response
 
 auth_api = Blueprint(
     'auth_api',
@@ -9,4 +9,6 @@ auth_api = Blueprint(
 
 @auth_api.post('/login')
 def login():
+    response = make_response()
+    response.set_cookie('')
     return ""

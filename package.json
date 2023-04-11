@@ -10,6 +10,7 @@
     "build": "webpack --config webpack.config.js --mode=production"
   },
   "dependencies": {
+    "socket.io-client": "^3.0.0",
     "@types/socket.io-client": "^3.0.0"
   },
   "devDependencies": {

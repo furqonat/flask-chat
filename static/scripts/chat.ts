@@ -10,7 +10,7 @@ socket.on('connect', () => {
     console.log('connected', "halo")
 })
 
-socket.on('message', (data) => {
+socket.on('message', (data: any) => {
     console.log(data)
 })
 

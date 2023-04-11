@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './static/scripts/index.ts',
   module: {
     rules: [
       {
@@ -11,7 +11,7 @@ module.exports = {
       },
       {
         test: /\.js$/i,
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, 'static/scripts'),
         use: {
           loader: 'babel-loader',
           options: {
@@ -21,7 +21,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, 'static/scripts'),
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
